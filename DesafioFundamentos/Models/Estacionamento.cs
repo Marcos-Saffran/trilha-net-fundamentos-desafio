@@ -1,22 +1,43 @@
 namespace DesafioFundamentos.Models
 {
+    /// <summary>
+    /// Classe que representa um estacionamento
+    /// </summary>
     public class Estacionamento
     {
         private decimal precoInicial = 0;
         private decimal precoPorHora = 0;
         private List<string> veiculos = new List<string>();
 
+        /// <summary>
+        /// Construtor da classe Estacionamento
+        /// </summary>
+        /// <param name="precoInicial">Preço inicial do estacionamento, quando o veículo entra no estacionamento.</param>
+        /// <param name="precoPorHora">Preço por hora do estacionamento</param>
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
             this.precoInicial = precoInicial;
             this.precoPorHora = precoPorHora;
         }
 
+        /// <summary>
+        /// Método que adiciona um veículo ao estacionamento
+        /// leia a placa do veículo e verifica se já existe um veículo estacionado com a mesma placa
+        /// Se já existir, exibe uma mensagem informando que o veículo já está estacionado
+        /// </summary>
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string placa = Console.ReadLine();
+            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            {
+                Console.WriteLine("Esse veículo já está estacionado.");
+            }
+            else
+            {
+                veiculos.Add(placa);
+                Console.WriteLine($"O veículo {placa} foi estacionado com sucesso!");
+            }
         }
 
         public void RemoverVeiculo()
@@ -36,7 +57,7 @@ namespace DesafioFundamentos.Models
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 // *IMPLEMENTE AQUI*
                 int horas = 0;
-                decimal valorTotal = 0; 
+                decimal valorTotal = 0;
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
